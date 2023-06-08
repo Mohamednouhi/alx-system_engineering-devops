@@ -1,2 +1,2 @@
 #!/bin/bash
-755 hello
+rwxr-xr-x hello
