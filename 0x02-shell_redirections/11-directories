@@ -1,2 +1,2 @@
 #!/bin/bash
-ls -dA */ | grep-c /
+find . -mindepth 1 -type d ! -name ".*" | wc -1
