@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Using seq command to generate numbers from 1 to 10, then iterating and printing "Best School"
+for i in $(seq 1 10); do
+        echo "Best School"
+done
