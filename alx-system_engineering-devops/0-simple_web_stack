@@ -1,0 +1,31 @@
+-What is a server:
+A server is a specialized computer or software system designed to provide services, data, or resources to other computers, known as clients, over a network12.
+
+-What is the role of the domain name:
+The domain name is a part of the web address someone would use to find your website or a page of your website online. It is a string of text associated with the numerical IP address of a website that’s much easier for people to remember and search.
+
+-What type of DNS record www is in www.foobar.com:
+In the URL www.foobar.com, www is typically a type of DNS record known as an A record or CNAME record.
+
+-What is the role of the web server:
+A web server is a software application or hardware device that stores, processes, and serves web content to users over the internet.
+
+-What is the role of the application server:
+An application server facilitates communication and transfer of resources between application databases and web clients.
+
+-What is the role of the database:
+A database is an organized collection of information that can be searched, sorted, and updated. Its primary role is to facilitate data retrieval and provide a dependable storage platform for essential data.
+
+-What is the server using to communicate with the computer of the user requesting the website:
+Servers typically communicate with the user’s computer using protocols like HTTP (Hypertext Transfer Protocol) for web servers.
+
+-As for the issues with this infrastructure:
+
+-SPOF:
+SPOF (Single Point of Failure): It’s a part of a system that, if it fails, will stop the entire system from working.
+
+-Downtime when maintenance needed (like deploying new code web server needs to be restarted):
+Downtime refers to a period during which a system is unavailable. It can be planned (for maintenance) or unplanned (due to unforeseen circumstances like equipment failure).
+
+-Cannot scale if too much incoming traffic:
+This issue can occur when the server is not capable of handling the volume of requests it receives, leading to slow response times or even server crashes.

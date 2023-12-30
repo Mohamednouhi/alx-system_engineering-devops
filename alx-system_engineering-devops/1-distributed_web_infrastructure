@@ -1,0 +1,36 @@
+-Why Additional Elements:
+Server 2 (Replica): Adds redundancy and ensures continuous service if Server 1 fails.
+
+Load Balancer (HAProxy): Distributes requests among servers for better performance.
+
+Primary-Replica Database Cluster: Enhances data redundancy, scalability, and fault tolerance.
+
+HTTPS and Firewall: Improve security.
+
+Monitoring Tools: Track and address performance issues proactively.
+
+-Load Balancer Algorithm:
+Round-robin: Distributes requests sequentially to each server, promoting fair resource utilization.
+
+
+-Active-Active Setup:
+Active-Active: Both Server 1 and Server 2 actively handle requests, providing better performance and fault tolerance.
+
+
+-Primary-Replica Database Cluster:
+Primary Node: Handles write operations, ensuring data consistency for the application.
+
+Replica Nodes: Handle read operations, providing scalability for read-intensive tasks and fault tolerance.
+
+
+-Issues:
+Single Points of Failure (SPOF):
+Potential SPOF with Server 3 (Database). Consider adding more Replica nodes for fault tolerance.
+Server 1 (Primary Web and Application Server) could be a SPOF if it fails.
+
+Security Issues:
+Implement a firewall to control traffic.
+Deploy HTTPS to encrypt data in transit.
+
+No Monitoring:
+Lack of monitoring tools makes issue identification and resolution challenging. Implement monitoring solutions for better visibility.
