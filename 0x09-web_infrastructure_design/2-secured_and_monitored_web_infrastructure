@@ -1,0 +1,46 @@
+Why Additional Elements:
+-Firewalls (3):
+
+Purpose: Enhance security by controlling incoming and outgoing traffic, preventing unauthorized access, and protecting against potential threats.
+
+
+-SSL Certificate:
+
+Purpose: Enables HTTPS, encrypting data in transit to ensure secure communication between users and the website.
+
+
+-Monitoring Clients (3):
+
+Purpose: Monitor and collect data on various aspects of the infrastructure to identify performance issues, security threats, and ensure system health.
+
+
+-Firewalls:
+Purpose: Firewalls control traffic flow based on predetermined security rules, acting as a barrier between the server and potential threats. They help prevent unauthorized access and secure the infrastructure.
+
+
+-SSL Certificate:
+Purpose: SSL certificates encrypt data during transit, protecting sensitive information from interception and ensuring the confidentiality and integrity of user communications.
+
+
+-Monitoring:
+Purpose: Monitoring is used to track and analyze the performance, availability, and security of the infrastructure. It helps detect issues, optimize resource utilization, and ensure a reliable and efficient system.
+How Monitoring Tool Collects Data:
+
+Data Collection: Monitoring tools collect data through agents or APIs. Agents on servers gather metrics such as CPU usage, memory consumption, disk I/O, network activity, and application-specific metrics. APIs enable integration with various services to retrieve relevant data.
+
+
+-Monitoring QPS (Queries Per Second):
+
+Set up monitoring tools to track the web server's request rate.
+Define thresholds and alerts for abnormal increases or decreases in QPS.
+Investigate and optimize server configuration based on QPS metrics.
+
+
+-Terminating SSL at Load Balancer:
+Issue: Terminating SSL at the load balancer exposes decrypted data within the internal network. Best practice is to encrypt traffic end-to-end for enhanced security.
+Single MySQL Server for Writes:
+
+Issue: Single point of failure for write operations. Consider implementing a Primary-Replica (Master-Slave) setup for fault tolerance.
+Identical Server Components:
+
+Issue: Uniformity may lead to a common mode of failure. Diversify components to avoid systemic vulnerabilities; for example, use different web server technologies or database management systems.
