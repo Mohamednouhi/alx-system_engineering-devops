@@ -1,8 +1,14 @@
 #!/usr/bin/env bash
 # Install nginx 
 
-apt-get -y update
-apt-get -y install nginx
-ufw allow 'Nginx HTTP'
-echo 'Hello World!' > /var/www/html/index.nginx-debian.html
-service nginx start
+sudo apt-get update -y
+# Install nginx
+sudo apt-get install nginx -y
+# Remove the default nginx index page
+sudo rm -rf /var/www/html/index.nginx-debian.html
+# Create a new index page
+echo "Hello World!" | sudo tee /var/www/html/index.html
+# Open port 80 on the firewall
+sudo ufw allow 'Nginx HTTP'
+# Start nginx
+sudo service nginx start
