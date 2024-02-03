@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/bash
 #ping ip adress that is passed as an arguement
 
 if [ "$#" -eq 0 ];
