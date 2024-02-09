@@ -1,23 +1,28 @@
 #!/usr/bin/env bash
-# Installs and setup haproxy
+# This script configures Nginx to include a custom HTTP response header
 
-apt-get install -y software-properties-common
-add-apt-repository -y ppa:vbernat/haproxy-1.8
-apt-get -y update
-apt-get install -y haproxy=1.8.\*
+# Install Nginx
+sudo apt-get -y update
+sudo apt-get -y install nginx
 
-echo "ENABLED=1" > /etc/default/haproxy
+# Start Nginx
+sudo service nginx start
 
-# Listen to web1 and web2 servers                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
-echo "
-   listen load_balancer
-   bind *:80
-   mode http
-   balance roundrobin
-   option httpclose
-   option forwardfor
-   server 17272-web-01 44.200.83.158:80 check
-   server 17272-web-02 3.237.16.226:80 check
-" >> /etc/haproxy/haproxy.cfg
+# Get the hostname of the server
+HOSTNAME=$(hostname)
 
-service haproxy start
+# Configure Nginx to include a custom HTTP response header
+echo "server {
+    listen 80 default_server;
+    listen [::]:80 default_server;
+    add_header X-Served-By $HOSTNAME;
+    location / {
+        root /var/www/html;
+        index index.html index.htm index.nginx-debian.html;
+        server_name _;
+        try_files \$uri \$uri/ =404;
+    }
+}" | sudo tee /etc/nginx/sites-available/default
+
+# Restart Nginx to apply the changes
+sudo service nginx restart
