@@ -1,20 +1,31 @@
-#!/usr/bin/env bash
-# Install Nginx
-sudo apt-get -y update
-sudo apt-get -y install nginx
-# Start Nginx service
-sudo service nginx start
-# Create a custom HTTP response header
-echo 'server {
-    listen 80 default_server;
-    listen [::]:80 default_server;
-    add_header X-Served-By $HOSTNAME;
-    location / {
-        root /var/www/html;
-        index index.html index.htm index.nginx-debian.html;
-        server_name _;
-        try_files $uri $uri/ =404;
-    }
-}' | sudo tee /etc/nginx/sites-available/default
-# Restart Nginx service
-sudo service nginx restart
+#!/bin/bash
+
+# Update packages and install Nginx
+sudo apt-get update -y
+sudo apt-get install nginx -y
+
+# Define the Nginx configuration
+config='
+server {
+   listen 80 default_server;
+   listen [::]:80 default_server;
+
+   root /var/www/html;
+   index index.html;
+   location /redirect_me {
+      return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
+   }
+   error_page 404 /404.html;
+   location = /404.html{
+      internal;
+   }
+
+   add_header X-Served-By $hostname;
+}'
+
+# Write the configuration to the Nginx default site
+echo "$config" | sudo tee /etc/nginx/sites-available/default
+
+# Check the configuration and reload Nginx
+sudo nginx -t && sudo systemctl reload nginx
+
