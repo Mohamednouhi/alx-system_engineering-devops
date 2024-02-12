@@ -1,7 +1,19 @@
-sudo ufw deny default incoming
+#install ufw
+sudo apt-get install ufw -y
 
-sudo ufw allow 22
+#deny all incoming
+sudo ufw default deny incoming
 
-sudo ufw allow 443
+#allow ssh 22
+sudo ufw allow 22/tcp
 
-sudo ufw allow 80
+#allow https ssl 443
+sudo ufw allow 443/tcp
+
+#allow http 80
+sudo ufw allow 80/tcp
+
+#enabling the ufw
+sudo ufw enable
+
+
