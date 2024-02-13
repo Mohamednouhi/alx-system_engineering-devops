@@ -1,0 +1,21 @@
+#!/usr/env/bin bash
+
+# Check if password is supplied
+if [ -z "$1" ]; then
+    echo "Usage: $0 <mysql root password>"
+    exit 1
+fi
+
+# MySQL user credentials
+USER='root'
+PASSWORD=$1
+
+# Create a MySQL dump
+mysqldump -u $USER -p$PASSWORD --all-databases > backup.sql
+
+# Get the current date
+DATE=$(date +%d-%m-%Y)
+
+# Create a compressed archive
+tar -czvf $DATE.tar.gz backup.sql
+
