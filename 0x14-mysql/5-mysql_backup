@@ -1,21 +1,11 @@
 #!/usr/bin/env bash
+# backup and compress my databases
 
-# Check if password is supplied
-if [ -z "$1" ]; then
-    echo "Usage: $0 <mysql root password>"
-    exit 1
-fi
+# variables
+day=$(date +"%d")
+month=$(date +"%m")
+year=$(date +"%Y")
+file_name="$day-$month-$year.tar.gz"
 
-# MySQL user credentials
-USER='root'
-PASSWORD=$1
-
-# Create a MySQL dump
-mysqldump -u $USER -p$PASSWORD --all-databases > backup.sql
-
-# Get the current date
-DATE=$(date +%d-%m-%Y)
-
-# Create a compressed archive
-tar -czvf $DATE.tar.gz backup.sql
-
+mysqldump --all-databases -u root --password="$1" > backup.sql
+/bin/bash: line 1: q: command not found
