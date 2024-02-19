@@ -5,20 +5,18 @@ import requests
 import sys
 
 def get_employee_todo_list(employee_id):
-    """base_url: the link of the database"""
+    """Fetches and displays the employee's TODO list progress."""
     base_url = 'https://jsonplaceholder.typicode.com'
-    """user_url: leads to employee details"""
     user_url = f'{base_url}/users/{employee_id}'
-    """todos_url: leads to tasks"""
-    todos_url = f'{base_url}/todos?user_Id={employee_id}'
+    todos_url = f'{base_url}/todos?userId={employee_id}'  # Corrected the parameter name
 
     try:
         user_response = requests.get(user_url)
         todos_response = requests.get(todos_url)
-        user_date = user_response.json()
+        user_data = user_response.json()  # Corrected variable name
         todos_data = todos_response.json()
 
-        employee_name = user_date['name']
+        employee_name = user_data['name']
         total_tasks = len(todos_data)
         done_tasks = sum(1 for task in todos_data if task['completed'])
 
@@ -37,3 +35,4 @@ if __name__ == '__main__':
 
     employee_id = int(sys.argv[1])
     get_employee_todo_list(employee_id)
+
